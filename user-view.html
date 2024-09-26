@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clinic Inventory - User View</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // Check if this page was reloaded
+      if (performance.navigation.type === 1) {
+        // Redirect to index.html
+        window.location.href = "index.html";
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Language Selector -->
+    <div class="language-selector">
+      <label for="language">Choose Language: </label>
+      <select id="language" onchange="changeLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="hi">Hindi</option>
+        <option value="bn">Bengali</option>
+      </select>
+    </div>
+
+    <img
+      src="https://scontent.fpnq7-2.fna.fbcdn.net/v/t39.30808-1/399014453_354646230454057_1511977887524393251_n.jpg?stp=dst-jpg_s480x480&_nc_cat=108&ccb=1-7&_nc_sid=f4b9fd&_nc_ohc=5x6hKsSyHzYQ7kNvgFuHfmf&_nc_ht=scontent.fpnq7-2.fna&_nc_gid=A1QfDYqz_HXUKtoRPpyDVS0&oh=00_AYAm8ycblpzZ6SOrvGIx1qnh_jGgXgukruyKmP6E96mnbA&oe=66F8EF79"
+      alt="Logo"
+      class="logo"
+    />
+
+    <!-- Dark Mode Toggle Button -->
+    <div class="footer">
+      <button onclick="userToggleDarkMode()">Toggle Dark Mode</button>
+    </div>
+
+    <div id="userViewSection" class="admin-container">
+      <!-- View Clinics Section -->
+      <div class="admin-section collapsible">
+        <h2 data-lang="viewUpdateClinics">
+          View Clinics
+          <button class="toggle-btn" onclick="userToggleSection(this)">
+            ⮝
+          </button>
+        </h2>
+        <div class="section-content show">
+          <input
+            class="inputField"
+            id="clinicIdSearch5"
+            placeholder="Search Clinic"
+          />
+          <select
+            id="userViewClinic"
+            class="inputField"
+            onchange="userFetchClinicInventory(this.value)"
+          >
+            <!-- This dropdown will be populated dynamically from Firebase -->
+          </select>
+        </div>
+      </div>
+
+      <!-- Pending Requests Section -->
+      <div class="admin-section collapsible">
+        <h2>
+          Pending Requests
+          <button class="toggle-btn" onclick="userToggleSection(this)">
+            ⮝
+          </button>
+        </h2>
+        <div class="section-content show">
+          <table id="pendingRequestsTable">
+            <thead>
+              <tr>
+                <th>Clinic</th>
+                <th>Asset</th>
+                <th>Quantity</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Pending requests will be dynamically loaded here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Approved Items Waiting to be Sent Section -->
+      <div class="admin-section collapsible">
+        <h2>
+          Approved Items Waiting to be Sent
+          <button class="toggle-btn" onclick="userToggleSection(this)">
+            ⮝
+          </button>
+        </h2>
+        <div class="section-content show">
+          <table id="approvedItemsTable">
+            <thead>
+              <tr>
+                <th>Clinic</th>
+                <th>Asset</th>
+                <th>Quantity</th>
+                <th>Approval Date</th>
+                <th>Status</th>
+                <th>Comments</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Approved items waiting to be sent will be dynamically loaded here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Clinic Inventory Section -->
+      <div class="admin-section collapsible">
+        <h2 data-lang="clinicInventory">
+          Clinic Inventory - <span id="clinic-name"></span>
+          <button class="toggle-btn" onclick="userToggleSection(this)">
+            ⮝
+          </button>
+        </h2>
+        <div class="section-content show">
+          <!-- Search Bar -->
+          <label for="searchInventory" data-lang="searchInventory"
+            >Search Inventory:</label
+          >
+          <input
+            type="text"
+            id="searchInventory"
+            placeholder="Search..."
+            onkeyup="userSearchInInventory()"
+            class="inputField"
+          />
+          <!-- Inventory Table -->
+          <table id="clinicTable" class="inventoryTable" data-clinic="">
+            <thead>
+              <tr>
+                <th data-lang="item">Item</th>
+                <th data-lang="quantity">Quantity</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <!-- Pagination Controls -->
+          <div class="pagination-controls">
+            <button onclick="previousPage()" data-lang="prevPage">
+              Previous
+            </button>
+            <span id="pageIndicator">Page 1</span>
+            <button onclick="nextPage()" data-lang="nextPage">Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p data-lang="footerText">Made with ♥ by M-Swasth Team</p>
+    </div>
+
+    <script type="module" src="user-view.js"></script>
+    <script type="module" src="translation.js"></script>
+  </body>
+</html>

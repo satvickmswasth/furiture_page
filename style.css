@@ -1,0 +1,400 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+  
+  /* Base Typography */
+  body {
+    font-family: "Poppins", sans-serif;
+    background-color: #f4f6f8;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Language Selector */
+  .language-selector {
+    margin: 10px;
+    text-align: right;
+  }
+  
+  .language-selector select {
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 1rem;
+    border: 1px solid #cccccc;
+  }
+  
+  /* Dark Mode */
+  body.dark-mode {
+    background-color: #121212;
+    color: #f5f5f5;
+  }
+  
+  body.dark-mode .admin-section {
+    background-color: rgba(30, 30, 30, 0.9);
+    border: 2px solid #ff9900;
+  }
+  
+  body.dark-mode .button {
+    background-color: #ff9900;
+  }
+  
+  body.dark-mode .button:hover {
+    background-color: #cc7a00;
+  }
+  
+  body.dark-mode .inventoryTable th {
+    background-color: #ff9900;
+  }
+  
+  body.dark-mode .inventoryTable td {
+    background-color: #333333;
+    color: #ffffff;
+  }
+  
+  /* Container Styles */
+  .container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .admin-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    justify-content: space-between;
+    margin: 50px;
+  }
+  
+  @media (max-width: 768px) {
+    .admin-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Loading Indicator */
+  #loadingIndicator {
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 10px;
+    color: #007bff;
+  }
+  
+  /* Individual Section Style */
+  .admin-section {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #007bff;
+    transition: background-color 0.3s ease, border 0.3s ease;
+  }
+  
+  /* Toggleable Section */
+  .admin-section.collapsible .section-content {
+    display: none;
+  }
+  
+  .admin-section.collapsible .section-content.show {
+    display: block;
+  }
+  
+  .admin-section .toggle-btn {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-size: 1.2rem;
+    float: right;
+    color: #333;
+  }
+  
+  .admin-section .toggle-btn:hover {
+    color: #007bff;
+  }
+  
+  /* Table Styling */
+  .inventoryTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .inventoryTable th,
+  .inventoryTable td {
+    border: 2px solid #007bff;
+    padding: 12px;
+    text-align: center;
+    font-size: 1rem;
+  }
+  
+  .inventoryTable th {
+    background-color: #007bff;
+    color: #ffffff;
+    font-weight: bold;
+  }
+  
+  .inventoryTable td {
+    background-color: #f8f9fa;
+  }
+  
+  /* Pending Requests Table */
+  #pendingRequestsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  #approvedItemsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  #pendingRequestsTable th,
+  #pendingRequestsTable td {
+    border: 2px solid #dc3545;
+    padding: 12px;
+    text-align: center;
+    font-size: 1rem;
+  }
+  #approvedItemsTable th,
+  #approvedItemsTable td {
+    border: 2px solid #dc3545;
+    padding: 12px;
+    text-align: center;
+    font-size: 1rem;
+  }
+  
+  #pendingRequestsTable th {
+    background-color: #dc3545;
+    color: #ffffff;
+    font-weight: bold;
+  }
+  #approvedItemsTable th {
+    background-color: #dc3545;
+    color: #ffffff;
+    font-weight: bold;
+  }
+  
+  #pendingRequestsTable td {
+    background-color: #f8d7da;
+  }
+  #approvedItemsTable td {
+    background-color: #f8d7da;
+  }
+  /* Pagination Controls */
+  .pagination-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .pagination-controls button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pagination-controls button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Search Bar */
+  #searchInventory {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  /* Input Fields */
+  .inputField {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  .inputField:focus {
+    border-color: #007bff;
+    outline: 2px solid #007bff;
+  }
+  
+  body.dark-mode .inputField {
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #ff9900;
+  }
+  
+  /* Buttons */
+  .button {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .button:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+  }
+  
+  .button:disabled {
+    background-color: #dddddd;
+    cursor: not-allowed;
+  }
+  button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Approve and Reject Buttons */
+  button.approve {
+    background-color: #ffffff;
+  }
+  
+  button.approve:hover {
+    background-color: #218838;
+  }
+  
+  button.reject {
+    background-color: #dc3545;
+  }
+  
+  button.reject:hover {
+    background-color: #c82333;
+  }
+  
+  /* Loading Spinner for Buttons */
+  .button.loading:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    transform: translate(-50%, -50%);
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+  
+/* Styling the footer container */
+.footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Styling the button */
+.footer button {
+  background-color: #77b2ff; /* Green background */
+  color: rgb(0, 0, 0); /* White text */
+  padding: 10px 20px; /* Padding */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s, box-shadow 0.3s;
+  font-weight: 800; /* Smooth transitions */
+  border-color: #000000;
+}
+
+/* Button hover effect */
+.footer button:hover {
+  background-color: #000000; /* Darker green */
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); /* Shadow effect */
+}
+
+/* Button focus outline for accessibility */
+.footer button:focus {
+  outline: 2px solid #000000; /* Custom focus outline */
+}
+
+/* Responsive button for smaller screens */
+@media (max-width: 600px) {
+  .footer button {
+    width: 100%; /* Full-width on small screens */
+    padding: 12px; /* Adjust padding */
+  }
+}
+
+  /* Animations */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  #loginSection {
+    animation: fadeIn 0.6s ease-in-out;
+  }
+  
+  /* Dark Mode for Footer */
+  body.dark-mode .footer button {
+    color: #ff9900;
+  }
+  
+  .footer button:hover {
+    color: #0056b3;
+  }
+  
+  body.dark-mode .footer button:hover {
+    color: #cc7a00;
+  }
+  .logo {
+    margin: 0 auto;
+    display: block;
+    max-width: 150px; /* Adjust the size of the logo */
+    height: auto;
+    padding-bottom: 20px; 
+    width: 100px;
+    border-radius: 150px;
+    background-color: transparent;
+
+    /* Adds space between the logo and the button */
+  }
+  
+
