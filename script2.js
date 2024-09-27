@@ -9,15 +9,18 @@ import {
   child,
 } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
 
+// Load environment variables
+require('dotenv').config();
+
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAPw2XrDvYMu49IiWJmEEUFL6O2Zb2kyIg",
-  authDomain: "clinic-inventory-e77e6.firebaseapp.com",
-  databaseURL: "https://clinic-inventory-e77e6-default-rtdb.firebaseio.com",
-  projectId: "clinic-inventory-e77e6",
-  storageBucket: "clinic-inventory-e77e6.appspot.com",
-  messagingSenderId: "28860646838",
-  appId: "1:28860646838:web:200b70eba27855ca712d17",
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.FIREBASE_DATABASE_URL,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.FIREBASE_APP_ID,
 };
 
 // Initialize Firebase
@@ -64,6 +67,7 @@ function downloadClinicsAsZip() {
       console.error("Error fetching clinics: ", error);
     });
 }
+
 function filterClinicIds() {
   const input = document.querySelector("#clinicIdSearch");
   const filter = input.value.trim().toUpperCase();
@@ -141,7 +145,6 @@ function updateClinicSearchField2() {
   document.getElementById("clinicIdSearch2").value = selectedClinicId;
   select.size = 1; // Set the size to 1 to close the dropdown
 }
-// Add this function to your script.js file
 
 function searchInInventory() {
   const input = document.getElementById('searchInventory');
@@ -161,15 +164,9 @@ function searchInInventory() {
     }
   }
 }
-// Add these functions to your script.js file
-
 
 // Make sure this function is accessible globally
 window.searchInInventory = searchInInventory;
+
 // Add button to download clinics as a zip file
 document.getElementById("downloadClinicsButton").addEventListener("click", downloadClinicsAsZip);
-window.downloadClinicsAsZip = downloadClinicsAsZip;
-window.filterClinicIds=filterClinicIds;
-window.updateClinicSearchField=updateClinicSearchField
-window.filterClinicIds2=filterClinicIds2;
-window.updateClinicSearchField1=updateClinicSearchField2
